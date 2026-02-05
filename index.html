@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Imagen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
@@ -20,7 +21,22 @@
     }
   </style>
 </head>
+
 <body oncontextmenu="return false;">
-  <img src="imagen.jpg" alt="Imagen protegida">
+  <img id="imagen" alt="Imagen protegida">
+
+  <script>
+    const TOTAL = 30;
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get('id'));
+
+    if (id >= 1 && id <= TOTAL) {
+      const numero = id.toString().padStart(2, '0');
+      document.getElementById('imagen').src = `img/${numero}.jpg`;
+    } else {
+      document.body.innerHTML =
+        '<p style="color:white;font-family:sans-serif">Imagen no válida</p>';
+    }
+  </script>
 </body>
 </html>
