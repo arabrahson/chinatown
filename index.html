@@ -32,7 +32,7 @@
 
     if (id >= 1 && id <= TOTAL) {
       const numero = id.toString().padStart(2, '0');
-      document.getElementById('imagen').src = `img/${numero}.jpg`;
+      document.getElementById('imagen').src = `img/${numero}.png`;
     } else {
       document.body.innerHTML =
         '<p style="color:white;font-family:sans-serif">Imagen no válida</p>';
