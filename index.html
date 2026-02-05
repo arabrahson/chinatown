@@ -5,17 +5,18 @@
   <title>Imagen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
       background: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
     }
     img {
-      max-width: 100%;
-      max-height: 100%;
+      width: 100vw;
+      height: 100vh;
+      object-fit: contain; /* cambia a cover si quieres que recorte */
       pointer-events: none;
       user-select: none;
     }
@@ -28,14 +29,14 @@
   <script>
     const TOTAL = 30;
     const params = new URLSearchParams(window.location.search);
-    const id = parseInt(params.get('id'));
+    const id = Number(params.get('id'));
 
     if (id >= 1 && id <= TOTAL) {
       const numero = id.toString().padStart(2, '0');
       document.getElementById('imagen').src = `img/${numero}.png`;
     } else {
       document.body.innerHTML =
-        '<p style="color:white;font-family:sans-serif">Imagen no válida</p>';
+        '<p style="color:white;font-family:sans-serif;text-align:center">Imagen no válida</p>';
     }
   </script>
 </body>
